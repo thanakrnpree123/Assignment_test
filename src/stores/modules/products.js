@@ -1,0 +1,24 @@
+const state = {
+  productList: []
+};
+
+const mutations = {
+  UPDATE_PRODUCT_LIST(state, productList) {
+    state.productList = productList;
+  }
+};
+
+const actions = {};
+
+const getters = {
+  products: state => {
+    return state.productList;
+  }
+};
+
+export default {
+  state,
+  mutations,
+  actions,
+  getters
+};
