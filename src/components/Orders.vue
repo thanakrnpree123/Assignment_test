@@ -1,6 +1,6 @@
 <template>
 <div>
-      <h2>
+      <h2 class="mt-4 text-center">
         รายการคำสั่งซื้อของคุณ
       </h2>
       <table class="table table-striped mt-5">
@@ -13,11 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="(ord, $index) in orderss" :key="ord.key"  action>
+      <tr v-if="orderss ==0">
+          <td colspan="100%" class="text-center text-danger"> <h4 >ไม่มี สินค้า นะ</h4> </td>
+      </tr>
+    <tr v-else v-for="(ord, $index) in orderss" :key="ord.title"  action>
       <th scope="row">{{$index+1}}</th>
-      <td>{{ord[0].title}}</td>
-      <td>{{ord[0].description}}</td>
-      <td>{{ord[0].price}}</td>
+      <td>{{ord.title}}</td>
+      <td>{{ord.description}}</td>
+      <td>{{ord.price}}</td>
     </tr>
   </tbody>
 </table>
@@ -39,8 +42,10 @@ export default {
       snapshot.forEach((doc) => {
         let item = doc.val()
         item.key = doc.key
-        console.log(item);
-        this.orderss.push(item)
+        item.forEach((r)=>{
+        this.orderss.push(r);
+        });
+
       });
     });
   }
