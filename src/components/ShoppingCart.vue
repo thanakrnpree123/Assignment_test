@@ -42,8 +42,16 @@
           </td>
           <td colspan="2" class="d-none d-sm-table-cell"></td>
           <td class="d-none d-sm-table-cell text-center">
-            <strong v-if="total == 0">ทั้งสิ้น {{ cartValue.toFixed(2) }} บาท</strong>
-            <strong v-else>ทั้งสิ้น {{ total.toFixed(2) }} บาท</strong>
+            <strong >ทั้งสิ้น {{ cartValue.toFixed(2) }} บาท</strong>
+<br>
+           <strong v-if="total !=0" >ส่วนลด {{ (cartValue*discountValue).toFixed(2) }} บาท
+
+               <br>
+               <br>
+              <u>รวมทั้งหมด {{total}} บาท</u>
+           </strong>
+
+
           </td>
           <td class="px-0">
             <button class="btn btn-info" @click="checkout">
@@ -68,7 +76,8 @@ export default {
   },
   data: function() {
     return {
-      total: 0
+      total: 0,
+      discountValue:0.2
     };
   },
   methods: {
@@ -120,3 +129,4 @@ export default {
   }
 }
 </style>
+
