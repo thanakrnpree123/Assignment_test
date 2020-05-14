@@ -18,8 +18,3 @@ export function saveToOrder(_, { cartItemList }) {
 	return ref.child('orders/').push(cartItemList);
 }
 
-export function orderList({ commit }) {
-  return ref.child('orders').on('value', orders => {
-    commit('UPDATE_ORDER_LIST', orders.val());
-  });
-}
